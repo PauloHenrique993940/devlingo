@@ -131,20 +131,20 @@ export const LessonScreen = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="mx-auto flex max-w-2xl flex-col">
-        <header className="flex items-center gap-4 p-6">
+    <div className="flex min-h-screen flex-col bg-white">
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col">
+        <header className="flex items-center gap-3 p-4 md:gap-4 md:p-6">
           <button
             onClick={() => navigate({ to: '/home', replace: true })}
-            className="text-gray-400"
+            className="text-gray-400 transition-colors hover:text-gray-600"
             aria-label="Fechar"
           >
-            <X className="h-5 w-5 cursor-pointer" />
+            <X className="h-6 w-6 cursor-pointer" />
           </button>
 
-          <div className="h-4 flex-1 rounded-full bg-gray-200">
+          <div className="h-3 flex-1 rounded-full bg-gray-200 md:h-4">
             <div
-              className="h-4 rounded-full bg-green-500"
+              className="h-3 rounded-full bg-green-500 transition-all duration-300 md:h-4"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -153,7 +153,7 @@ export const LessonScreen = () => {
             {[...Array(3)].map((_, i) => (
               <Heart
                 key={i}
-                className={`h-5 w-5 ${
+                className={`h-5 w-5 md:h-6 md:w-6 ${
                   i < hearts ? 'fill-red-500 text-red-500' : 'text-gray-300'
                 }`}
               />
@@ -161,24 +161,30 @@ export const LessonScreen = () => {
           </div>
         </header>
 
-        <main className="flex-1 px-6">
-          <h1 className="mt-6 text-3xl font-bold text-gray-800">{question.title}</h1>
+        <main className="flex-1 px-6 py-4 md:py-6">
+          <h1 className="text-2xl font-bold text-gray-800 md:text-3xl">{question.title}</h1>
 
-          <div className="mt-6 space-y-4">
+          <div className="mt-6 space-y-3 md:mt-8 md:space-y-4">
             {question.options.map((option, index) => {
               const isSelected = selectedOption === index;
               return (
                 <button
                   key={option}
                   onClick={() => setSelectedOption(index)}
-                  className={`flex w-full items-center justify-between rounded-xl border-2 p-4 text-left transition-colors ${
+                  className={`flex w-full cursor-pointer items-center justify-between rounded-2xl border-2 p-4 text-left transition-all active:scale-[0.98] ${
                     isSelected
-                      ? 'border-blue-400 bg-blue-100'
-                      : 'border-gray-200 bg-white hover:bg-gray-50'
+                      ? 'border-blue-400 bg-blue-50 shadow-[0_4px_0_0_rgb(96,165,250)] translate-y-[-2px]'
+                      : 'border-gray-200 bg-white hover:bg-gray-50 shadow-[0_4px_0_0_rgb(229,231,235)]'
                   }`}
                 >
-                  <span className="text-gray-800">{option}</span>
-                  <span className="flex h-6 w-6 items-center justify-center rounded-md border text-xs text-gray-500">
+                  <span className={`text-sm font-black md:text-base ${isSelected ? 'text-blue-600' : 'text-slate-700'}`}>
+                    {option}
+                  </span>
+                  <span className={`flex h-8 w-8 items-center justify-center rounded-lg border-2 text-xs font-black transition-colors ${
+                    isSelected 
+                      ? 'border-blue-400 bg-blue-100 text-blue-600' 
+                      : 'border-gray-200 text-slate-400'
+                  }`}>
                     {index + 1}
                   </span>
                 </button>
@@ -187,20 +193,24 @@ export const LessonScreen = () => {
           </div>
         </main>
 
-        <footer className="mt-8 flex items-center justify-between border-t border-gray-100 p-6">
-          <button
-            onClick={handleSkip}
-            className="cursor-pointer not-only:rounded-xl bg-gray-200 px-6 py-3 text-sm font-bold uppercase text-gray-700"
-          >
-            Pular
-          </button>
-          <button
-            onClick={handleVerify}
-            disabled={selectedOption === null}
-            className="cursor-pointer rounded-xl bg-green-500 px-8 py-3 text-sm font-bold uppercase text-white transition-colors hover:bg-green-600"
-          >
-            Verificar
-          </button>
+        <footer className="mt-auto border-t-2 border-gray-100 p-4 md:p-6 lg:px-0">
+          <div className="mx-auto flex max-w-2xl items-center justify-between gap-4">
+            <button
+              onClick={handleSkip}
+              className="btn-secondary-3d flex-1 md:flex-none md:px-12"
+            >
+              Pular
+            </button>
+            <button
+              onClick={handleVerify}
+              disabled={selectedOption === null}
+              className={`${
+                selectedOption === null ? 'bg-gray-200 border-gray-300 text-gray-400 cursor-not-allowed' : 'btn-success-3d'
+              } flex-[2] md:flex-none md:px-16`}
+            >
+              Verificar
+            </button>
+          </div>
         </footer>
       </div>
 

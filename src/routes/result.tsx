@@ -34,7 +34,7 @@ const ResultScreenComponent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-linear-to-b from-purple-50 to-white flex items-center justify-center px-6 py-12">
       <div className="flex flex-col items-center w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">

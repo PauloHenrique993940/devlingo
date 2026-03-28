@@ -528,9 +528,9 @@ VALUES
 INSERT INTO public.lesson_questions (lesson_id, question_text, position)
 VALUES
   ((SELECT id FROM public.lessons WHERE title = 'Escopo e Closure' LIMIT 1),
-   'O que é escopo em JavaScript?', 1),
+  'O que é escopo em JavaScript?', 1),
   ((SELECT id FROM public.lessons WHERE title = 'Escopo e Closure' LIMIT 1),
-   'Closure ocorre quando...', 2);
+  'Closure ocorre quando...', 2);
 
 INSERT INTO public.lesson_question_options (question_id, option_text, is_correct, position)
 VALUES

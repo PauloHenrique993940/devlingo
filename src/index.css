@@ -1,5 +1,46 @@
 @import "tailwindcss";
 
+@theme {
+  --font-nunito: "Nunito", sans-serif;
+}
+
+body {
+  @apply font-nunito bg-gray-50 text-slate-900;
+}
+
+/* Efeito 3D estilo Duolingo */
+@utility btn-3d {
+  @apply relative transition-all active:top-0.5 active:border-b-0;
+}
+
+@utility btn-primary-3d {
+  @apply btn-3d rounded-xl border-b-4 border-purple-800 bg-purple-600 px-6 py-3 font-bold uppercase text-white hover:bg-purple-500;
+}
+
+@utility btn-success-3d {
+  @apply btn-3d rounded-xl border-b-4 border-green-700 bg-green-500 px-6 py-3 font-bold uppercase text-white hover:bg-green-400;
+}
+
+@utility btn-secondary-3d {
+  @apply btn-3d rounded-xl border-b-4 border-gray-300 bg-white px-6 py-3 font-bold uppercase text-gray-500 hover:bg-gray-50;
+}
+
+.card-shadow {
+  box-shadow: 0 8px 0 0 rgba(0,0,0,0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-purple-300/50;
+}
+
 @keyframes float {
 	0%,
 	100% {

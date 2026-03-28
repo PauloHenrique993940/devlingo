@@ -13,43 +13,45 @@ export const Header = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white border-b-2 border-gray-100 sticky top-0 z-30">
       {/* Top Bar */}
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="mx-auto max-w-5xl flex items-center justify-between px-4 py-3 md:px-6">
         {/* Idioma */}
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-yellow-400">
-          <span className="text-sm font-bold text-black">JS</span>
+        <div className="flex h-10 w-12 items-center justify-center rounded-xl border-b-4 border-yellow-600 bg-yellow-400">
+          <span className="text-sm font-black text-yellow-900">JS</span>
         </div>
 
         {/* Status e Ações */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-8">
           {/* Gemas */}
-          <div className="flex items-center gap-2">
-            <IoDiamond className="h-5 w-5 text-cyan-500" />
-            <span className="text-sm font-bold text-cyan-500">{userProfile?.total_xp ?? 0}</span>
+          <div className="flex items-center gap-2 group cursor-help" title="Seu XP Total">
+            <IoDiamond className="h-6 w-6 text-cyan-400 drop-shadow-sm transition-transform group-hover:scale-110" />
+            <span className="text-base font-black text-cyan-500">{userProfile?.total_xp ?? 0}</span>
           </div>
 
           {/* Vidas */}
-          <div className="flex items-center gap-2">
-            <IoHeart className="h-5 w-5 text-red-500" />
-            <span className="text-sm font-bold text-red-500">∞</span>
+          <div className="flex items-center gap-2 group" title="Vidas Infinitas">
+            <IoHeart className="h-6 w-6 text-red-500 drop-shadow-sm transition-transform group-hover:scale-110" />
+            <span className="text-base font-black text-red-500">∞</span>
           </div>
 
           {/* Sair */}
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 text-slate-500 transition-colors hover:text-slate-700 cursor-pointer"
+            className="flex items-center gap-2 rounded-xl p-2 text-slate-400 transition-all hover:bg-slate-50 hover:text-slate-600 active:scale-95 cursor-pointer"
           >
-            <span className="text-sm font-medium">Sair</span>
+            <span className="hidden text-sm font-bold sm:inline">SAIR</span>
             <LogOut className="h-5 w-5" />
           </button>
         </div>
       </div>
 
-      {/* Unit Banner */}
-      <div className="mx-6 mb-6 rounded-2xl border-b-4 border-violet-800 bg-[#7c3aed] p-8">
-        <p className="text-sm font-medium uppercase text-white">Começar Unidade</p>
-        <h1 className="mt-2 text-3xl font-bold text-white">Fundamentos de JavaScript</h1>
+      {/* Unit Banner - Container */}
+      <div className="mx-auto max-w-5xl px-4 md:px-6 py-4">
+        <div className="rounded-2xl border-b-4 border-violet-800 bg-violet-600 p-6 md:p-8 shadow-lg shadow-violet-200">
+          <p className="text-xs font-black uppercase tracking-wider text-violet-200 md:text-sm">Módulo 1</p>
+          <h1 className="mt-1 text-2xl font-black text-white md:mt-2 md:text-3xl">Fundamentos de JavaScript</h1>
+        </div>
       </div>
     </div>
   );
