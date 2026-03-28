@@ -55,7 +55,7 @@ function HomeComponent() {
     navigate({
       to: '/lessons/$lessonId',
       params: { lessonId: String(lessonId) },
-      state: { lesson },
+      state: { lesson } as any,
     });
   };
 
